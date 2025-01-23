@@ -60,10 +60,11 @@ import { httpRouter } from 'convex/server';
 import { httpAction } from './_generated/server';
 import { Webhook } from 'svix'; // Ensure you have the `svix` library installed
 import { internal } from './_generated/api';
-type WebhookEvent = {
-  type: string;
-  data: Record<string, any>;
-};
+import { WebhookEvent } from '@clerk/nextjs/server';
+// type WebhookEvent = {
+//   type: string;
+//   data: Record<string, any>;
+// };
 
 const validatePayload = async (
   req: Request
@@ -89,6 +90,7 @@ const validatePayload = async (
 
 const handleClerkWebhook = httpAction(async (_ctx, req) => {
   const event = await validatePayload(req);
+  console.log(event);
   if (!event) {
     return new Response('Invalid webhook signature', { status: 400 });
   }
