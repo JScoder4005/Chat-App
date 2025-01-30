@@ -21,12 +21,13 @@ const DesktopNav = () => {
           {paths.map((path, id) => {
             return (
               <li key={id} className="relative">
-                <Link href={path.href}>
+                <Link href={path.href} suppressHydrationWarning>
                   <Tooltip>
-                    <TooltipTrigger>
+                    <TooltipTrigger asChild>
                       <Button
                         size={'icon'}
                         variant={path.active ? 'default' : 'outline'}
+                        suppressHydrationWarning
                       >
                         {path.icon}
                       </Button>

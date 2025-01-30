@@ -31,8 +31,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { useMutationState } from '@/hooks/useMutationState';
 import { api } from '@/convex/_generated/api';
-
-type Props = {};
+import { toast } from 'sonner';
+import { ConvexError } from 'convex/values';
 
 const addFriendFormSchema = z.object({
   email: z
@@ -41,7 +41,7 @@ const addFriendFormSchema = z.object({
     .email('Please enter a valid email'),
 });
 
-const AddFriendDialog = (props: Props) => {
+const AddFriendDialog = () => {
   const { mutate: createRequest, pending } = useMutationState(
     api.request.create
   );
@@ -56,8 +56,13 @@ const AddFriendDialog = (props: Props) => {
     await createRequest({ email: values.email })
       .then(() => {
         form.reset();
+        toast.success('Friend request sent successfully');
       })
-      .catch(() => {});
+      .catch((error) => {
+        toast.error(
+          error instanceof ConvexError ? error.data : 'Unexpected error occured'
+        );
+      });
   };
   return (
     <Dialog>

@@ -59,12 +59,13 @@ const MobileNav = () => {
         <ul className="flex items-center justify-between space-x-4">
           {paths.map((path, id) => (
             <li key={id} className="relative">
-              <Link href={path.href}>
+              <Link href={path.href} suppressHydrationWarning>
                 <Tooltip>
-                  <TooltipTrigger>
+                  <TooltipTrigger asChild>
                     <Button
                       size={'icon'}
                       variant={path.active ? 'default' : 'outline'}
+                      suppressHydrationWarning
                     >
                       {path.icon}
                     </Button>
@@ -77,7 +78,7 @@ const MobileNav = () => {
             </li>
           ))}
           <li>
-            <ThemeToggle className="w-8 h-8" />
+            <ThemeToggle />
           </li>
           <li>
             <UserButton
