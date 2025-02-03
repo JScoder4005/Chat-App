@@ -25,20 +25,23 @@ const DesktopNav = () => {
                 <Link href={path.href} suppressHydrationWarning>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button
-                        size={'icon'}
-                        variant={path.active ? 'default' : 'outline'}
-                        suppressHydrationWarning
-                      >
-                        {path.icon}
-                      </Button>
-                      {path.name ? (
-                        <Badge className="absolute left-6 bottom-7 px-2">
-                          {path.count}
-                        </Badge>
-                      ) : (
-                        'null'
-                      )}
+                      <div className="relative">
+                        <Button
+                          size={'icon'}
+                          variant={path.active ? 'default' : 'outline'}
+                          suppressHydrationWarning
+                        >
+                          {path.icon}
+                        </Button>
+
+                        {path.name ? (
+                          <Badge className="absolute left-6 bottom-7 px-2">
+                            {path.count}
+                          </Badge>
+                        ) : (
+                          'null'
+                        )}
+                      </div>
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>{path.name}</p>
