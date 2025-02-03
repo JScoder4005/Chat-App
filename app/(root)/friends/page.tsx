@@ -13,6 +13,9 @@ type Props = {};
 
 const FriendsPage = (props: Props) => {
   const requests = useQuery(api.requests.get);
+
+  console.log('Requests data:', requests); // Debugging request state
+  console.log('Number of requests:', requests?.length);
   return (
     <>
       <ItemList title="Friends" action={<AddFriendDialog />}>
