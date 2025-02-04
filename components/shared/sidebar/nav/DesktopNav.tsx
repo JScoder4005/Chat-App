@@ -39,7 +39,7 @@ const DesktopNav = () => {
                             {path.count}
                           </Badge>
                         ) : (
-                          'null'
+                          'null '
                         )}
                       </div>
                     </TooltipTrigger>
