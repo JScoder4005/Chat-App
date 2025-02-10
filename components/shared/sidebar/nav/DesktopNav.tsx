@@ -15,6 +15,7 @@ import Link from 'next/link';
 
 const DesktopNav = () => {
   const paths = useNavigation();
+
   return (
     <Card className="hidden lg:flex lg:flex-col lg:justify-between lg:items-center lg:h-full lg:w-16 lg:px-2 lg-py-4">
       <nav>
@@ -34,13 +35,11 @@ const DesktopNav = () => {
                           {path.icon}
                         </Button>
 
-                        {path.name ? (
+                        {path.count ? (
                           <Badge className="absolute left-6 bottom-7 px-2">
                             {path.count}
                           </Badge>
-                        ) : (
-                          'null '
-                        )}
+                        ) : null}
                       </div>
                     </TooltipTrigger>
                     <TooltipContent>

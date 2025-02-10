@@ -11,6 +11,7 @@ import {
 import { useConversation } from '@/hooks/useConversation';
 import { useNavigation } from '@/hooks/useNavigation';
 import { UserButton } from '@clerk/nextjs';
+import { Badge } from 'lucide-react';
 import Link from 'next/link';
 
 const MobileNav = () => {
@@ -62,13 +63,20 @@ const MobileNav = () => {
               <Link href={path.href} suppressHydrationWarning>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button
-                      size={'icon'}
-                      variant={path.active ? 'default' : 'outline'}
-                      suppressHydrationWarning
-                    >
-                      {path.icon}
-                    </Button>
+                    <div className="relative">
+                      <Button
+                        size={'icon'}
+                        variant={path.active ? 'default' : 'outline'}
+                        suppressHydrationWarning
+                      >
+                        {path.icon}
+                      </Button>
+                      {path.count ? (
+                        <Badge className="absolute left-7 bottom-6">
+                          {path.count}
+                        </Badge>
+                      ) : null}
+                    </div>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>{path.name}</p>
