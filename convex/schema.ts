@@ -37,7 +37,7 @@ export default defineSchema({
     lastSeenMessages: v.optional(v.id('messages')),
   })
     .index('by_memberId', ['memberId'])
-    .index('by_conversationId', ['memberId'])
+    .index('by_conversationId', ['conversationId'])
     .index('by_memberId_conversationId', ['memberId', 'conversationId']),
   messages: defineTable({
     senderId: v.id('users'),
