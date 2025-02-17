@@ -51,8 +51,8 @@ export const get = query({
           const otherMembership = allconversationMemberships.filter(
             (membership) => membership.memberId !== currentUser._id
           );
-          const otherUser = await ctx.db.get(otherMembership[0].memberId);
-          return { conversation, otherUser };
+          const otherMember = await ctx.db.get(otherMembership[0].memberId);
+          return { conversation, otherMember };
         }
       })
     );
